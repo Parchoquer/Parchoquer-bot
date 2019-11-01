@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js');
 const Youtube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const { YOUTUBEAPI } = require('../../config');
-const youtube = new Youtube(YOUTUBEAPI);
+const youtube = new Youtube(process.env.YOUTUBEAPI);
 
 var queue = [];
 var isPlaying;
