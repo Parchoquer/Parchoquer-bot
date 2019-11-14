@@ -28,7 +28,7 @@ module.exports = async (client, message, args) => {
 
             // commenter pour autoriser la lecture de stream 
             if (video.raw.snippet.liveBroadcastContent === "live") {
-                return message.say("❌ **La lecture des flux direct n'est pas supporter !**");
+                return message.channel.send("❌ **La lecture des flux direct n'est pas supporter !**");
             }
 
             const title = video.title;
@@ -44,7 +44,7 @@ module.exports = async (client, message, args) => {
             };
 
             if (queue.length > 10) {
-                return message.say(
+                return message.channel.send(
                     "**La queue est pleine, attendez un peut** ⏳"
                 );
             }
@@ -67,7 +67,7 @@ module.exports = async (client, message, args) => {
     try {
         const videos = await youtube.searchVideos(rech, 5);
         if (videos.length < 5) {
-            return message.say(
+            return message.channel.send(
                 `❌ **J\'ai du mal à comprendre votre recherche, veuillez réessayer**`
             );
         }
@@ -111,7 +111,7 @@ module.exports = async (client, message, args) => {
             var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
             if (video.raw.snippet.liveBroadcastContent === 'live') {
                 songEmbed.delete();
-                return message.say("❌ **Les flux en direct ne sont pas autoriser**");
+                return message.channel.send("❌ **Les flux en direct ne sont pas autoriser**");
                 }
         }
         catch (err) {
@@ -136,7 +136,7 @@ module.exports = async (client, message, args) => {
 
             if (queue.length > 10) {
                 songEmbed.delete();
-                return message.say(
+                return message.channel.send(
                     '**La queue est pleine! Attendez un peut**'
                 );
             }

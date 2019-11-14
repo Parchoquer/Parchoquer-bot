@@ -13,6 +13,8 @@ client.commands.set("ping", require("./commands/utilisateur/ping"));
 client.commands.set("info", require("./commands/utilisateur/info"));
 client.commands.set("shit", require("./commands/utilisateur/shit"));
 client.commands.set("help", require("./commands/utilisateur/help"));
+client.commands.set("fn", require("./commands/utilisateur/fn"));
+client.commands.set("img", require("./commands/utilisateur/img"));
 
 // commande admin
 client.commands.set("role", require("./commands/admin/role"));
@@ -24,6 +26,7 @@ client.commands.set("config", require("./commands/admin/config"));
 client.commands.set("play", require("./commands/musique/play"));
 client.commands.set("queue", require("./commands/musique/queue"));
 client.commands.set("skip", require("./commands/musique/skip"));
+client.commands.set("quit", require("./commands/musique/quit"))
 
 // Evenement
 client.on("ready", () => require("./events/ready.js")(client));

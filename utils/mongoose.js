@@ -6,6 +6,7 @@ module.exports = {
         const mongOptions = {
             useNewUrlParser: true,
             useFindAndModify: false,
+            useUnifiedTopology: true,   // Activer le nouveau moteur de détection et de surveillance
             autoIndex: false, // Don't build indexes
             reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
             reconnectInterval: 500, // Reconnect every 500ms

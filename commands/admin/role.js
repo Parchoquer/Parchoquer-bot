@@ -1,4 +1,6 @@
 module.exports = (client, message, args, settings) => {
+    if (!message.member.hasPermission("ADMINISTRATOR")) return undefined;
+    
     const channel = client.channels.find(r => r.name === `${settings.welcomeChannel}`);
     const role = message.guild.roles.find(r => r.name === args[0]);
     if (!role) return message.channel.send("Ce rôle n'existe pas !");
