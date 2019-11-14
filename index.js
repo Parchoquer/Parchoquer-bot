@@ -31,8 +31,8 @@ client.commands.set("quit", require("./commands/musique/quit"))
 // Evenement
 client.on("ready", () => require("./events/ready.js")(client));
 client.on("message", msg => require("./events/message.js")(client, msg));
-client.on("guildMemberAdd", member => require("./events/guildMemberAdd.js")(client, member));
-client.on("guildMemberRemove", member => require("./events/guildMemberRemove.js")(client, member));
+// client.on("guildMemberAdd", member => require("./events/guildMemberAdd.js")(client, member));
+// client.on("guildMemberRemove", member => require("./events/guildMemberRemove.js")(client, member));
 client.on("guildCreate", guild => require("./events/guildCreate.js")(client, guild));
 
 client.mongoose.init();
