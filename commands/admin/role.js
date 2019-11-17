@@ -1,5 +1,5 @@
 module.exports = (client, message, args, settings) => {
-    if (!message.member.hasPermission("ADMINISTRATOR")) return undefined;
+    if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas les permission");
     
     const channel = client.channels.find(r => r.name === `${settings.welcomeChannel}`);
     const role = message.guild.roles.find(r => r.name === args[0]);

@@ -1,5 +1,9 @@
 module.exports = async (client, message, args, settings) => {
-    if (!message.member.hasPermission("ADMINISTRATOR")) return undefined;   //Si le client n'est pas de rôle administrateur sur la guild alors on ne répond pas
+    if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas les permission");   //Si le client n'est pas de rôle administrateur sur la guild alors on ne répond pas
+    if (!args[0])
+        return message.reply(
+            `\nSyntaxe: config <***prefix***>`
+        );
 
     const getSettings = args[0];
     const newSettings = args.slice(1).join(" ");

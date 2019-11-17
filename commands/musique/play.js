@@ -101,7 +101,6 @@ module.exports = async (client, message, args) => {
         } 
         catch (err) {
             console.error(err);
-            // songEmbed.delete();
             return message.channel.send("❌ **Vous avez mis trop de temps a répondre, veuillez réessayer et entrez un nombre compris entre 1 et 5**");
         }
 
@@ -116,7 +115,6 @@ module.exports = async (client, message, args) => {
         }
         catch (err) {
             console.error(err);
-            // songEmbed.delete();
             return message.channel.send(`❌ **Une erreur est survenue lors de la tentative d\'obtention de l\'identifiant vidéo de youtube**`);
         }
 
@@ -135,7 +133,6 @@ module.exports = async (client, message, args) => {
             };
 
             if (queue.length > 10) {
-                // songEmbed.delete();
                 return message.channel.send(
                     '**La queue est pleine! Attendez un peut**'
                 );
@@ -143,24 +140,20 @@ module.exports = async (client, message, args) => {
             queue.push(song);
             if (isPlaying == false || typeof isPlaying == 'undefined') {
                 isPlaying = true;
-                // songEmbed.delete();
                 playSong(queue, message);
             } 
             else if (isPlaying == true) {
-                // songEmbed.delete();
                 return message.channel.send(`${song.title} **ajouter a la queue** :white_check_mark:`);
             }
         } 
         catch (err) {
             console.error(err);
-            // songEmbed.delete();
             return message.channel.send(`processus de file d'attente a mal tourné`);
         }
     }
     catch (err) {
         console.error(err);
         if (songEmbed) {
-            // songEmbed.delete();
         }
         return message.channel.send('❌ **Une erreur s\'est produite lors de la recherche**');
     }

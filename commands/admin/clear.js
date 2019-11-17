@@ -2,7 +2,7 @@ module.exports = (client, message, args,) => {
     if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas les permission");
     if (!args[0])
         return message.reply(
-            `\nSyntaxe: !clear <***NombreMessage***>`
+            `\nSyntaxe: clear <***NombreMessage***>`
         );
   
     message.delete();

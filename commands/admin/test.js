@@ -5,7 +5,7 @@ module.exports = async (client, message, args) => {
       return text;
     }
   
-    if (message.author.id !== "233402655559385088") return undefined;
+    if (message.author.id !== "233402655559385088") return message.channel.send("Vous n'avez pas les permission, seul le propriétaire du bot peut l'executer");
     const code = args.join(" ");
     const evaled = eval(code);
     const cleanCode = await clean(evaled);
