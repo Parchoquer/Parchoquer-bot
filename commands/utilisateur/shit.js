@@ -1,3 +1,3 @@
-module.exports = (client, message) => {
-    message.channel.send("beuh!");
+module.exports = async (client, message) => {
+    message.channel.send("Hi !");
 };

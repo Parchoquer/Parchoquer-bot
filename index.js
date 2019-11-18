@@ -21,6 +21,7 @@ client.commands.set("role", require("./commands/admin/role"));
 client.commands.set("clear", require("./commands/admin/clear"));
 client.commands.set("test", require("./commands/admin/test"));
 client.commands.set("config", require("./commands/admin/config"));
+client.commands.set("reboot", require("./commands/admin/reboot"));
 
 // commande musique
 client.commands.set("play", require("./commands/musique/play"));
