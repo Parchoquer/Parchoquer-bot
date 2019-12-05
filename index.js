@@ -15,6 +15,7 @@ client.commands.set("shit", require("./commands/utilisateur/shit"));
 client.commands.set("help", require("./commands/utilisateur/help"));
 client.commands.set("fn", require("./commands/utilisateur/fn"));
 client.commands.set("img", require("./commands/utilisateur/img"));
+client.commands.set("ml", require("./commands/utilisateur/ml")); // Dev
 
 // commande admin
 client.commands.set("role", require("./commands/admin/role"));
@@ -37,7 +38,11 @@ client.on("message", msg => require("./events/message.js")(client, msg));
 client.on("guildCreate", guild => require("./events/guildCreate.js")(client, guild));
 
 client.mongoose.init();
-client.login(process.env.TOKENS); // --> client.login(TOKEN);
+
+if (process.env.TOKENS) 
+    client.login(process.env.TOKENS)
+else client.login(TOKEN);
+
 client.on("error", console.error);
 client.on("warn", console.warn);
 // client.on("debug", console.log);

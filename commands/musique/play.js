@@ -78,12 +78,12 @@ module.exports = async (client, message, args) => {
         vidNameArr.push('exit');
         const embed = new MessageEmbed()
             .setColor('#6432FF')
-            .setTitle('Choisissez une musique en entrant 1 et 5 (sans le prefix)')
-            .addField(':one:', vidNameArr[0])
-            .addField(':two:', vidNameArr[1])
-            .addField(':three:', vidNameArr[2])
-            .addField(':four:', vidNameArr[3])
-            .addField(':five:', vidNameArr[4])
+            .setTitle('Choisissez une musique en entre 1 et 5 (sans le prefix)')
+            .addField('**----------------------------------------**', vidNameArr[0])
+            .addField('**----------------------------------------**', vidNameArr[1])
+            .addField('**----------------------------------------**', vidNameArr[2])
+            .addField('**----------------------------------------**', vidNameArr[3])
+            .addField('**----------------------------------------**', vidNameArr[4])
             .addField(':name_badge:', 'exit');
         var songEmbed = await message.channel.send({ embed });
 
@@ -93,7 +93,7 @@ module.exports = async (client, message, args) => {
                 {
                     max: 1,
                     maxProcessed: 1,
-                    time: 60000,
+                    time: 30000,
                     errors: ['time']
                 }
             );
