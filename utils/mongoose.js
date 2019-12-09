@@ -17,7 +17,7 @@ module.exports = {
             family: 4 // Use IPv4, skip trying IPv6
         };
 
-        mongoose.connect(DBCONNECT, mongOptions);
+        mongoose.connect(process.env.MONGODB, mongOptions);
 
         mongoose.connection.on("connected", () => console.log(`\x1b[37m\x1b[44m[+]\x1b[0m Mongoose est connecté !`));
         mongoose.connection.on("disconnected", () => console.log(`\x1b[37m\x1b[41m[+]\x1b[0m Mongoose est déconnecté !`));
