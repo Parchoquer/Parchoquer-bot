@@ -1,5 +1,6 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageAttachment } = require('discord.js');
 const Youtube = require('simple-youtube-api');
+const Canvas = require("canvas");
 const ytdl = require('ytdl-core');
 const { YOUTUBEAPI } = require('../../config');
 const youtube = new Youtube(process.env.YOUTUBEAPI);
@@ -65,8 +66,8 @@ module.exports = async (client, message, args) => {
     }
 
     try {
-        const videos = await youtube.searchVideos(rech, 5);
-        if (videos.length < 5) {
+        const videos = await youtube.searchVideos(rech, 7);
+        if (videos.length < 7) {
             return message.channel.send(
                 `❌ **J\'ai du mal à comprendre votre recherche, veuillez réessayer**`
             );
@@ -76,16 +77,27 @@ module.exports = async (client, message, args) => {
             vidNameArr.push(`${i + 1}: ${videos[i].title}`);
         }
         vidNameArr.push('exit');
-        const embed = new MessageEmbed()
-            .setColor('#6432FF')
-            .setTitle('Choisissez une musique en entre 1 et 5 (sans le prefix)')
-            .addField('**----------------------------------------**', vidNameArr[0])
-            .addField('**----------------------------------------**', vidNameArr[1])
-            .addField('**----------------------------------------**', vidNameArr[2])
-            .addField('**----------------------------------------**', vidNameArr[3])
-            .addField('**----------------------------------------**', vidNameArr[4])
-            .addField(':name_badge:', 'exit');
-        var songEmbed = await message.channel.send({ embed });
+
+        const canvas = Canvas.createCanvas(800, 600);
+        const ctx = canvas.getContext('2d');
+        const imgMusic = await Canvas.loadImage("./././img/logoMusicv1.png");
+        
+        ctx.drawImage(imgMusic, 0, 0);
+        ctx.font = "25px fast99";
+        ctx.fillStyle = "rgba(255, 255, 255, 1)";
+        ctx.fillText(vidNameArr[0], 10, 100);
+        ctx.fillText(vidNameArr[1], 10, 155);
+        ctx.fillText(vidNameArr[2], 10, 210);
+        ctx.fillText(vidNameArr[3], 10, 265);
+        ctx.fillText(vidNameArr[4], 10, 320);
+        ctx.fillText(vidNameArr[5], 10, 375);
+        ctx.fillText(vidNameArr[6], 10, 430);
+
+        const attachmentMusic = new MessageAttachment(
+            canvas.toBuffer(),
+            "imgMusic.png"
+        );
+        var songEmbed = await message.channel.send(attachmentMusic);
 
         try {
             var response = await message.channel.awaitMessages(
