@@ -15,7 +15,7 @@ client.commands.set("shit", require("./commands/utilisateur/shit"));
 client.commands.set("help", require("./commands/utilisateur/help"));
 client.commands.set("fn", require("./commands/utilisateur/fn"));
 client.commands.set("img", require("./commands/utilisateur/img"));
-client.commands.set("ml", require("./commands/utilisateur/ml")); // Dev
+// client.commands.set("ml", require("./commands/utilisateur/ml")); // Dev
 
 // commande admin
 client.commands.set("role", require("./commands/admin/role"));
