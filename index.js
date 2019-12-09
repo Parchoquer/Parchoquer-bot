@@ -29,6 +29,8 @@ client.commands.set("play", require("./commands/musique/play"));
 client.commands.set("queue", require("./commands/musique/queue"));
 client.commands.set("skip", require("./commands/musique/skip"));
 client.commands.set("quit", require("./commands/musique/quit"))
+client.commands.set("pause", require("./commands/musique/pause"))
+client.commands.set("resume", require("./commands/musique/resume"))
 
 // Evenement
 client.on("ready", () => require("./events/ready.js")(client));
