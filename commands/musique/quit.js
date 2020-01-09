@@ -11,8 +11,8 @@ module.exports = (client, message) => {
     if (typeof dispatcher == 'undefined') {
       return message.channel.send(`Il n\'y a pas de musique en ce moment`);
     }
-    if (!playFile.queue) return message.channel.send(`Il n'y a pas de musique en attente !`);
-    playFile.queue.length = 0;
+    if (!message.guild.musicData.queue) return message.channel.send(`Il n'y a pas de musique en attente !`);
+    message.guild.musicData.queue.length = 0;
     dispatcher.end();
     return;
 };

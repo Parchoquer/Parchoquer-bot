@@ -5,8 +5,8 @@ const ytdl = require('ytdl-core');
 const { YOUTUBEAPI } = require('../../config');
 const youtube = new Youtube(process.env.YOUTUBEAPI);
 
-var queue = [];
-var isPlaying;
+// var queue = [];
+// var isPlaying;
 
 module.exports = async (client, message, args) => {
     if (!args[0])
@@ -44,18 +44,19 @@ module.exports = async (client, message, args) => {
                 voiceChannel
             };
 
-            if (queue.length > 10) {
+            if (message.guild.musicData.queue.length > 10) {
                 return message.channel.send(
                     "**La queue est pleine, attendez un peut** ⏳"
                 );
             }
 
-            queue.push(song);
-            if (isPlaying == false || typeof isPlaying == 'undefined') {
-                isPlaying = true;
-                return playSong(queue, message);
+            message.guild.musicData.queue.push(song);
+            
+            if (message.guild.musicData.isPlaying == false || typeof message.guild.musicData.isPlaying == 'undefined') {
+                message.guild.musicData.isPlaying = true;
+                return playSong(message.guild.musicData.queue, message);
             } 
-            else if (isPlaying == true) {
+            else if (message.guild.musicData.isPlaying == true) {
                 return message.channel.send(`${song.title} **ajouter a la queue** :white_check_mark:`);
             }
         } 
@@ -144,17 +145,17 @@ module.exports = async (client, message, args) => {
                 voiceChannel
             };
 
-            if (queue.length > 10) {
+            if (message.guild.musicData.queue.length > 10) {
                 return message.channel.send(
                     '**La queue est pleine! Attendez un peut**'
                 );
             }
-            queue.push(song);
-            if (isPlaying == false || typeof isPlaying == 'undefined') {
-                isPlaying = true;
-                playSong(queue, message);
+            message.guild.musicData.queue.push(song);
+            if (message.guild.musicData.isPlaying == false || typeof message.guild.musicData.isPlaying == 'undefined') {
+                message.guild.musicData.isPlaying = true;
+                playSong(message.guild.musicData.queue, message);
             } 
-            else if (isPlaying == true) {
+            else if (message.guild.musicData.isPlaying == true) {
                 return message.channel.send(`${song.title} **ajouter a la queue** :white_check_mark:`);
             }
         } 
@@ -203,7 +204,7 @@ function playSong(queue, message) {
             if (queue.length >= 1) {
             return playSong(queue, message);
             } else {
-                isPlaying = false;
+                message.guild.musicData.isPlaying = false;
             return voiceChannel.leave();
             }
         })

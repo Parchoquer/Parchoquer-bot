@@ -1,6 +1,19 @@
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, Structures } = require("discord.js");
 const { TOKEN } = require("./config")
 require("dotenv").config()
+
+Structures.extend('Guild', Guild => {
+    class MusicGuild extends Guild {
+      constructor(client, data) {
+        super(client, data);
+        this.musicData = {
+          queue: [],
+          isPlaying: false
+        };
+      }
+    }
+    return MusicGuild;
+  });
 
 const client = new Client();
 
@@ -15,7 +28,6 @@ client.commands.set("shit", require("./commands/utilisateur/shit"));
 client.commands.set("help", require("./commands/utilisateur/help"));
 client.commands.set("fn", require("./commands/utilisateur/fn"));
 client.commands.set("img", require("./commands/utilisateur/img"));
-// client.commands.set("ml", require("./commands/utilisateur/ml")); // Dev
 
 // commande admin
 client.commands.set("role", require("./commands/admin/role"));
@@ -23,6 +35,7 @@ client.commands.set("clear", require("./commands/admin/clear"));
 client.commands.set("test", require("./commands/admin/test"));
 client.commands.set("config", require("./commands/admin/config"));
 client.commands.set("reboot", require("./commands/admin/reboot"));
+client.commands.set("ml", require("./commands/admin/ml"));
 
 // commande musique
 client.commands.set("play", require("./commands/musique/play"));

@@ -1,8 +1,7 @@
 const { MessageEmbed } = require('discord.js');
-const playFile = require("./play.js");
 
 module.exports = async (client, message) => {
-    const queue = playFile.queue;
+    const queue = message.guild.musicData.queue;
     if (!queue) return message.channel.send(`Il n'y a pas de musique en attente !`);
     const titleArray = [];
     queue.map(obj => {

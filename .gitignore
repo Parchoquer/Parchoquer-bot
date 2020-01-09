@@ -2,4 +2,3 @@
 /template/
 .env
 package-lock.json
-/commands/utilisateur/ml.js
