@@ -35,7 +35,6 @@ client.commands.set("clear", require("./commands/admin/clear"));
 client.commands.set("test", require("./commands/admin/test"));
 client.commands.set("config", require("./commands/admin/config"));
 client.commands.set("reboot", require("./commands/admin/reboot"));
-client.commands.set("ml", require("./commands/admin/ml"));
 
 // commande musique
 client.commands.set("play", require("./commands/musique/play"));
